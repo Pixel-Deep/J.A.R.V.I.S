@@ -18,8 +18,11 @@ def generate_audio(message: str,voice : str = "Matthew"):
         return None
     
 def print_animated_message(message):
+    green_color = '\033[32m'  # ANSI escape code for green
+    reset_color = '\033[0m'   # Reset color to default
+    
     for char in message:
-        sys.stdout.write(char)
+        sys.stdout.write(green_color + char + reset_color)
         sys.stdout.flush()
         time.sleep(0.050)  # Adjust the sleep duration for the animation speed
     print()

@@ -26,6 +26,9 @@ twine
 keyboard
 SpeechRecognition
 textblob
-re
 imdbpy
 wikipedia
+pillow
+pyppeteer
+pyquery
+olefile

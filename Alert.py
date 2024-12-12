@@ -32,3 +32,6 @@ def Alert(Text, subtitle=None, duration="short"):
     # Display the toast notification
     toast.show()
 
+
+
+Alert("Jarvis Activated")

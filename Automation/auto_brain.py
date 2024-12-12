@@ -66,7 +66,7 @@ def Auto_main_brain(text):
             break
                     
      
-    elif "play some music" in text or "play music on spotify" in text:
+    elif  "play music spotify" in text:
         speak("Which song do you want to play, sir.")
         while True:
             output_text=listen()

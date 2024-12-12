@@ -2,22 +2,33 @@ import speech_recognition as sr
 
 def listen():
     recognizer = sr.Recognizer()
-    with sr.Microphone() as source:
-        recognizer.adjust_for_ambient_noise(source)
-        
+    recognizer.dynamic_energy_threshold = False
+    recognizer.energy_threshold = 500
+    recognizer.dynamic_energy_adjustment_damping = 0.15
+    recognizer.dynamic_energy_ratio = 0.9
+    recognizer.pause_threshold = 0.5
+    recognizer.operation_timeout = None
 
-        while True:  # Loop until valid input is received
-            try:
-                audio = recognizer.listen(source, timeout=5, phrase_time_limit=5)
-                text = recognizer.recognize_google(audio).strip()
-                text = text.lower()
-                
-                if text:
-                    print("User :"+text)  # If valid input is detected
-                    return text
-            except (sr.WaitTimeoutError, sr.UnknownValueError, sr.RequestError):
-                pass  # Retry silently
-            except Exception:
-                pass  # Retry silently
+    try:
+        with sr.Microphone() as source:
+            
+            audio = recognizer.listen(source)
 
+        try:
+            # Attempt to recognize the speech
+            text = recognizer.recognize_google(audio, language='en-IN')
+            text = text.lower()
+            print("\033[93mUser: {}\033[0m".format(text), flush=True)
+            return text
+        except sr.UnknownValueError:
+            # Handle case where speech is not understood
+            print("\033[91mCould not understand the audio.\033[0m", flush=True)
+        except sr.RequestError as e:
+            # Handle API errors or connection issues
+            print("\033[91mSpeech recognition service error: {}\033[0m".format(e), flush=True)
+    except Exception as e:
+        # Handle any other errors, such as microphone access issues
+        print("\033[91mAn error occurred: {}\033[0m".format(e), flush=True)
 
+    # Return a fallback value to ensure the program continues
+    return ""

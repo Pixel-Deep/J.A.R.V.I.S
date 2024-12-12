@@ -11,6 +11,7 @@ import pygame
 import time
 import os
 
+
 music_file = "Musics/booting.mp3"
 music_file_path = os.path.abspath(music_file)
 ran_online_dlg = random.choice(online_dlg)
@@ -18,10 +19,10 @@ ran_online_dlg = random.choice(online_dlg)
 greeting=get_greeting()
 
 def main(): 
-    print_animated_message("Listerning...")
+    print_animated_message("System Authentication...")
     
     if wait_for_jarvis() == 1:
-        print("Jarvis Activated")
+        print_animated_message("Jarvis Activated")
         pygame.mixer.init()
         pygame.mixer.music.load(music_file_path)
         pygame.mixer.music.play()
@@ -32,6 +33,7 @@ def main():
             Alert(ran_online_dlg,greeting)
             speak(greeting)
             speak(ran_online_dlg)
+            
 
             while True:
                 output_text=listen()
@@ -40,8 +42,6 @@ def main():
                 if output_text == "shut down" or output_text=="close" or output_text=="exit" or output_text=="quit" or output_text=="bye" or output_text=="goodbye" or output_text=="shutdown" or output_text=="close jarvis" or output_text=="close Jarvis" :
                     speak("Goodbye Sir")
                     break
-        
-
      
 
 main()

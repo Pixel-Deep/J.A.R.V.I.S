@@ -13,13 +13,13 @@ from Brain.brain_phind import Main_Brain
 from Features.find_ip import find_my_ip
 from Features.get_joke import get_random_joke
 from Features.get_advice import get_random_advice
-from Others.extract import extract_volume_level
 from Brain.imdb import fetch_movie_data
 from Brain.wiki import search_on_wikipedia
 from Time_Function.time import get_greeting, get_current_time
 from Brain.news import fetch_news, _format_headlines
 from Brain.datafeatch import main
 from TTS.fast_df import print_animated_message
+from TTI.image_gen import generate_image
 import pygame
 import os
 
@@ -82,6 +82,11 @@ def check_inputs(output_text):
     elif "joke" in output_text :
         ans = get_random_joke()
         speak(ans)
+    
+    elif "image" in output_text:
+        speak("Working on it")
+        generate_image(output_text)
+
 
     elif "find ip" in output_text or "what is my ip" == output_text or "what is my ip address" == output_text or "find my ip" in output_text or "find my ip address" in output_text:
         ans =find_my_ip()

@@ -32,3 +32,4 @@ pillow
 pyppeteer
 pyquery
 olefile
+speedtest-cli

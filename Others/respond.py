@@ -5,7 +5,7 @@ import threading
 def wait_for_jarvis():
  
     while True:
-        print("................................................................")
+        print("............................")
         user_input = listen()
         if user_input == "jarvis":
             return 1

@@ -87,7 +87,7 @@ def check_inputs(output_text):
         ans =find_my_ip()
         print(ans)
 
-    elif "explain" in output_text or "explain me" in output_text or "explain this" in output_text or "what is" in output_text or "what is this" in output_text or "define " in output_text or "define this" in output_text or "definition of" in output_text or "definition of this" in output_text or "define this" in output_text or "definition of this" in output_text or "who is" in output_text or "who is this" in output_text or "where is" in output_text or "where is this" in output_text or "tell me" in output_text or "elaborate" in output_text or "describe" in output_text :
+    elif "explain" in output_text or "what" in output_text or "define " in output_text or "definition" in output_text or "define this" in output_text or "who" in output_text or "where" in output_text or "tell" in output_text or "elaborate" in output_text or "describe" in output_text :
         ans =Main_Brain(output_text)
         speak(ans)
 

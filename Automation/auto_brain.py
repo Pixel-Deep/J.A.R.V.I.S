@@ -58,7 +58,7 @@ def Auto_main_brain(text):
     elif "close" in text:
         close()
 
-    elif "play music" ==text or "play music on youtube" ==text:
+    elif "play music" == text or "play music on youtube" in text:
         speak("which song do you want to play sir.")
         while True:
             output_text=listen()
@@ -74,7 +74,9 @@ def Auto_main_brain(text):
             break
 
     elif "search in google" in text:
-        text = text.replace("search in google","")
+        text = text.replace("search","")
+        text = text.replace("in","")
+        text = text.replace("google","")
         t1 = threading.Thread(target=speak,args=(f"performing research about {text} in google search engine",))
         t2 = threading.Thread(target=search_google,args=(text,))
         t1.start()
